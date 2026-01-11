@@ -1,25 +1,25 @@
 // Curated content configuration for homepage sections
 
 export const START_HERE_SLUGS = [
-  'oraciones-por-el-matrimonio',
-  'oracion-por-mi-matrimonio',
-  'oracion-por-mi-esposo',
-  'oracion-por-mi-esposa',
-  'oracion-para-fortalecer-el-matrimonio',
-  'oracion-por-el-amor-en-el-matrimonio',
+  'oraciones-para-la-paz-interior',
+  'oracion-para-la-paz-interior',
+  'oracion-para-calmar-la-mente',
+  'oracion-para-la-serenidad',
+  'oracion-para-la-tranquilidad-interior',
+  'oracion-para-encontrar-paz-interior',
 ];
 
 export const FEATURED_SLUGS = [
-  'oracion-para-salvar-el-matrimonio',
-  'oracion-por-crisis-matrimonial',
-  'oracion-para-reconciliacion-en-el-matrimonio',
-  'oracion-para-sanar-heridas-de-pareja',
-  'oracion-para-restaurar-la-confianza',
-  'oracion-por-la-paz-en-el-hogar',
+  'oracion-para-el-silencio-interior',
+  'oracion-para-descansar-el-alma',
+  'oracion-para-soltar-pensamientos',
+  'oracion-para-vivir-en-paz',
+  'oracion-para-la-paz-del-corazon',
+  'oracion-para-la-calma-interior',
 ];
 
 // Primary prayer for main CTA
-export const PRIMARY_PRAYER_SLUG = 'oraciones-por-el-matrimonio';
+export const PRIMARY_PRAYER_SLUG = 'oraciones-para-la-paz-interior';
 
 // Quick action categories with icons and slugs
 export interface QuickAction {
@@ -30,20 +30,20 @@ export interface QuickAction {
 }
 
 export const QUICK_ACTIONS: QuickAction[] = [
-  { id: 'fortalecer', label: 'Fortalecer', icon: 'protection', slug: 'oracion-para-fortalecer-el-matrimonio' },
-  { id: 'comunicacion', label: 'Comunicación', icon: 'family', slug: 'oracion-para-la-comunicacion-en-pareja' },
-  { id: 'perdon', label: 'Perdón', icon: 'gratitude', slug: 'oracion-para-perdonar-en-el-matrimonio' },
-  { id: 'paz', label: 'Paz', icon: 'trust', slug: 'oracion-por-la-paz-en-el-hogar' },
-  { id: 'unidad', label: 'Unidad', icon: 'anxiety', slug: 'oracion-por-unidad-matrimonial' },
+  { id: 'calmar', label: 'Calmar', icon: 'trust', slug: 'oracion-para-calmar-la-mente' },
+  { id: 'serenidad', label: 'Serenidad', icon: 'gratitude', slug: 'oracion-para-la-serenidad' },
+  { id: 'silencio', label: 'Silencio', icon: 'protection', slug: 'oracion-para-el-silencio-interior' },
+  { id: 'descanso', label: 'Descanso', icon: 'family', slug: 'oracion-para-descansar-el-alma' },
+  { id: 'ansiedad', label: 'Ansiedad', icon: 'anxiety', slug: 'oracion-para-la-paz-en-la-ansiedad' },
 ];
 
-// Daily verse for "Santo del día" equivalent
+// Daily verse for spiritual inspiration
 export const DAILY_VERSES = [
-  { text: 'Lo que Dios unió, que no lo separe el hombre.', reference: 'Marcos 10:9' },
-  { text: 'El amor es paciente, es bondadoso. El amor no es envidioso ni jactancioso ni orgulloso.', reference: '1 Corintios 13:4' },
-  { text: 'Sobre todo, ámense los unos a los otros profundamente, porque el amor cubre multitud de pecados.', reference: '1 Pedro 4:8' },
-  { text: 'Maridos, amen a sus esposas, así como Cristo amó a la iglesia y se entregó por ella.', reference: 'Efesios 5:25' },
-  { text: 'Más valen dos que uno, porque obtienen más fruto de su esfuerzo.', reference: 'Eclesiastés 4:9' },
+  { text: 'La paz os dejo, mi paz os doy; yo no os la doy como el mundo la da.', reference: 'Juan 14:27' },
+  { text: 'Tú guardarás en completa paz a aquel cuyo pensamiento en ti persevera.', reference: 'Isaías 26:3' },
+  { text: 'Y la paz de Dios, que sobrepasa todo entendimiento, guardará vuestros corazones.', reference: 'Filipenses 4:7' },
+  { text: 'Venid a mí todos los que estáis trabajados y cargados, y yo os haré descansar.', reference: 'Mateo 11:28' },
+  { text: 'En quietud y en confianza será vuestra fortaleza.', reference: 'Isaías 30:15' },
 ];
 
 export function getDailyVerse() {

@@ -20,21 +20,21 @@ const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://REPLACE_AFTER_VERCE
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
-  title: "Oraciones por el matrimonio - Oraciones para fortalecer la relación de pareja",
-  description: "Oraciones originales para fortalecer la relación, sanar heridas, recuperar la confianza y vivir el amor con Dios en el centro.",
-  keywords: ["oraciones por el matrimonio", "oraciones por mi esposo", "oraciones por mi esposa", "oraciones católicas para parejas", "oraciones para fortalecer el matrimonio"],
+  title: "Oraciones para la paz interior - Calma tu mente y descansa en Dios",
+  description: "Oraciones y reflexiones originales para calmar la mente, encontrar serenidad interior y descansar el corazón en Dios.",
+  keywords: ["oraciones para la paz interior", "oración para calmar la mente", "oración para la serenidad", "paz interior católica", "oraciones de tranquilidad"],
   openGraph: {
-    title: "Oraciones por el matrimonio",
-    description: "Oraciones originales para fortalecer la relación, sanar heridas, recuperar la confianza y vivir el amor con Dios en el centro.",
+    title: "Oraciones para la paz interior",
+    description: "Oraciones y reflexiones originales para calmar la mente, encontrar serenidad interior y descansar el corazón en Dios.",
     url: baseUrl,
-    siteName: "Oraciones por el matrimonio",
+    siteName: "Oraciones para la paz interior",
     locale: "es_ES",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Oraciones por el matrimonio",
-    description: "Oraciones originales para fortalecer la relación, sanar heridas, recuperar la confianza y vivir el amor con Dios en el centro.",
+    title: "Oraciones para la paz interior",
+    description: "Oraciones y reflexiones originales para calmar la mente, encontrar serenidad interior y descansar el corazón en Dios.",
   },
 };
 

@@ -64,23 +64,23 @@ export default function HomeClient({ allPages }: HomeClientProps) {
     <div className="min-h-screen">
       {/* Hero Section */}
       <Hero
-        title="Oraciones por el matrimonio"
-        subtitle="Oraciones originales para fortalecer la relación, sanar heridas, recuperar la confianza y vivir el amor con Dios en el centro"
+        title="Oraciones para la paz interior"
+        subtitle="Oraciones y reflexiones originales para calmar la mente, encontrar serenidad interior y descansar el corazón en Dios"
         ctaText="Comenzar a orar"
-        ctaHref={primaryPrayer ? `/${primaryPrayer.slug}` : '/oraciones-por-el-matrimonio'}
+        ctaHref={primaryPrayer ? `/${primaryPrayer.slug}` : '/oraciones-para-la-paz-interior'}
       />
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 space-y-16">
-        {/* Comienza Aquí Section */}
+        {/* Encuentra paz interior Section */}
         {!searchQuery && startHerePages.length > 0 && (
           <section>
             <div className="mb-8">
               <h2 className="text-2xl md:text-3xl font-bold text-[var(--foreground)] mb-2">
-                Comienza aquí
+                Encuentra paz interior
               </h2>
               <p className="text-[var(--muted)]">
-                Las oraciones esenciales para fortalecer tu matrimonio
+                Oraciones esenciales para calmar la mente y descansar en Dios
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -91,15 +91,15 @@ export default function HomeClient({ allPages }: HomeClientProps) {
           </section>
         )}
 
-        {/* Destacadas Section */}
+        {/* Oraciones destacadas Section */}
         {!searchQuery && featuredPages.length > 0 && (
           <section>
             <div className="mb-8">
               <h2 className="text-2xl md:text-3xl font-bold text-[var(--foreground)] mb-2">
-                Destacadas
+                Oraciones destacadas
               </h2>
               <p className="text-[var(--muted)]">
-                Oraciones poderosas para sanar, reconciliar y restaurar tu matrimonio
+                Profundiza en la serenidad, el silencio y el descanso espiritual
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
