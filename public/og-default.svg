@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" fill="none">
+  <rect width="1200" height="630" fill="#faf8f5"/>
+  <rect x="40" y="40" width="1120" height="550" rx="24" fill="#fff" stroke="#e8e2d9" stroke-width="2"/>
+  <circle cx="600" cy="240" r="80" fill="#8b7355" opacity="0.1"/>
+  <circle cx="600" cy="240" r="50" fill="#8b7355" opacity="0.15"/>
+  <path d="M600 180 L600 300 M560 220 L640 220" stroke="#8b7355" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="600" cy="200" r="16" fill="#d4a574"/>
+  <text x="600" y="380" text-anchor="middle" font-family="Georgia, serif" font-size="48" font-weight="600" fill="#2d2a26">Oraciones para la paz interior</text>
+  <text x="600" y="440" text-anchor="middle" font-family="system-ui, sans-serif" font-size="24" fill="#6b6560">Calma tu mente y descansa en Dios</text>
+  <text x="600" y="540" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" fill="#8b7355">jesuscontigo.org</text>
+</svg>

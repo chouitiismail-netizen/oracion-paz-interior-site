@@ -5,6 +5,7 @@ import Hero from './Hero';
 import PrayerCard from './PrayerCard';
 import type { PageData } from '../lib/content';
 import { START_HERE_SLUGS, FEATURED_SLUGS, PRIMARY_PRAYER_SLUG } from '../lib/config';
+import { DEFAULT_FAQS, generateFAQSchema, jsonLdScriptProps } from '../lib/seo';
 
 interface HomeClientProps {
   allPages: PageData[];
@@ -119,11 +120,16 @@ export default function HomeClient({ allPages }: HomeClientProps) {
 
             {/* Search Input */}
             <div className="mb-4">
+              <label htmlFor="search-prayers" className="sr-only">
+                Buscar oraciones
+              </label>
               <input
+                id="search-prayers"
                 type="search"
                 placeholder="Buscar oraciones por tema, palabra clave..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
+                aria-label="Buscar oraciones por tema o palabra clave"
                 className="w-full max-w-2xl px-4 py-3 bg-[var(--card)] border border-[var(--border)] rounded-xl text-[var(--foreground)] placeholder:text-[var(--muted)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:border-transparent"
               />
             </div>
@@ -189,6 +195,41 @@ export default function HomeClient({ allPages }: HomeClientProps) {
             </div>
           )}
         </section>
+
+        {/* FAQ Section */}
+        {!searchQuery && (
+          <section aria-labelledby="faq-heading">
+            <script {...jsonLdScriptProps(generateFAQSchema(DEFAULT_FAQS))} />
+            <div className="mb-8">
+              <h2 id="faq-heading" className="text-2xl md:text-3xl font-bold text-[var(--foreground)] mb-2">
+                Preguntas frecuentes
+              </h2>
+              <p className="text-[var(--muted)]">
+                Respuestas a las dudas más comunes sobre la oración y la paz interior
+              </p>
+            </div>
+            <div className="space-y-4">
+              {DEFAULT_FAQS.map((faq, index) => (
+                <details
+                  key={index}
+                  className="group bg-[var(--card)] border border-[var(--border)] rounded-xl overflow-hidden"
+                >
+                  <summary className="flex items-center justify-between p-5 cursor-pointer list-none hover:bg-[var(--accent)]/5 transition-colors">
+                    <h3 className="font-semibold text-[var(--foreground)] pr-4">{faq.question}</h3>
+                    <span className="flex-shrink-0 text-[var(--accent)] group-open:rotate-180 transition-transform">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </span>
+                  </summary>
+                  <div className="px-5 pb-5 text-[var(--muted)] leading-relaxed">
+                    <p>{faq.answer}</p>
+                  </div>
+                </details>
+              ))}
+            </div>
+          </section>
+        )}
       </div>
     </div>
   );

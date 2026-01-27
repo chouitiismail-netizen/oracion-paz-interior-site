@@ -26,13 +26,13 @@ export default function Footer() {
           </div>
 
           {/* Links */}
-          <div className="flex flex-wrap items-center justify-center gap-4 text-sm">
+          <nav aria-label="Enlaces del pie de página" className="flex flex-wrap items-center justify-center gap-4 text-sm">
             <Link href="/" className="text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">
               Inicio
             </Link>
             {legalHrefs.avisoLegalHref && (
               <>
-                <span className="text-[var(--border)]">•</span>
+                <span className="text-[var(--border)]" aria-hidden="true">•</span>
                 <Link href={legalHrefs.avisoLegalHref} className="text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">
                   Aviso Legal
                 </Link>
@@ -40,22 +40,23 @@ export default function Footer() {
             )}
             {legalHrefs.privacidadHref && (
               <>
-                <span className="text-[var(--border)]">•</span>
+                <span className="text-[var(--border)]" aria-hidden="true">•</span>
                 <Link href={legalHrefs.privacidadHref} className="text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">
                   Privacidad
                 </Link>
               </>
             )}
-            <span className="text-[var(--border)]">•</span>
+            <span className="text-[var(--border)]" aria-hidden="true">•</span>
             <a
               href="https://www.jesuscontigo.org/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-[var(--accent)] hover:text-[var(--accent-dark)] font-medium transition-colors"
+              aria-label="Visitar Jesús Contigo (se abre en una nueva pestaña)"
             >
               Jesús Contigo →
             </a>
-          </div>
+          </nav>
 
           {/* Copyright */}
           <div className="text-center">

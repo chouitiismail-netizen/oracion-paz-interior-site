@@ -4,6 +4,13 @@ import type { Metadata } from 'next';
 import { getAllPages, getPageBySlug, getRelatedSpiritualPages } from '../../lib/content';
 import Container from '../../components/ui/Container';
 import Card from '../../components/ui/Card';
+import {
+    generateArticleSchema,
+    generateBreadcrumbSchema,
+    jsonLdScriptProps,
+    getBaseUrl,
+    SITE_NAME,
+} from '../../lib/seo';
 
 export async function generateStaticParams() {
     return getAllPages().map((p) => ({ slug: p.slug }));
@@ -23,13 +30,27 @@ export async function generateMetadata({
         return {
             title: "Página no encontrada",
             description: "La página que buscas no existe.",
+            robots: { index: false, follow: false },
         };
     }
+
+    const isLegal = page.category === 'legal';
 
     return {
         title: page.metaTitle || page.title,
         description: page.metaDescription,
         keywords: page.keywords,
+        robots: {
+            index: true,
+            follow: true,
+            googleBot: {
+                index: true,
+                follow: true,
+                "max-video-preview": -1,
+                "max-image-preview": "large",
+                "max-snippet": -1,
+            },
+        },
         alternates: {
             canonical: `${baseUrl}/${slug}`,
         },
@@ -37,9 +58,29 @@ export async function generateMetadata({
             title: page.metaTitle || page.title,
             description: page.metaDescription,
             url: `${baseUrl}/${slug}`,
-            siteName: "Oraciones para la paz interior",
+            siteName: SITE_NAME,
             locale: "es_ES",
-            type: "article",
+            type: isLegal ? "website" : "article",
+            images: [
+                {
+                    url: `${baseUrl}/og-default.png`,
+                    width: 1200,
+                    height: 630,
+                    alt: page.title,
+                },
+            ],
+            ...(isLegal ? {} : {
+                publishedTime: page.publishedAt,
+                modifiedTime: page.updatedAt,
+                section: "Oraciones",
+                tags: page.keywords,
+            }),
+        },
+        twitter: {
+            card: "summary_large_image",
+            title: page.metaTitle || page.title,
+            description: page.metaDescription,
+            images: [`${baseUrl}/og-default.png`],
         },
     };
 }
@@ -62,17 +103,37 @@ export default async function ArticlePage({
     // Parse content sections
     const sections = parseContent(page.content);
 
+    // Generate JSON-LD schemas
+    const siteUrl = getBaseUrl();
+    const breadcrumbSchema = generateBreadcrumbSchema([
+        { name: "Inicio", url: siteUrl },
+        { name: page.category.charAt(0).toUpperCase() + page.category.slice(1), url: siteUrl },
+        { name: page.title },
+    ]);
+
+    const articleSchema = !isLegal ? generateArticleSchema({
+        slug: page.slug,
+        title: page.title,
+        description: page.metaDescription,
+        publishedAt: page.publishedAt,
+        updatedAt: page.updatedAt,
+        keywords: page.keywords,
+    }) : null;
+
     return (
-        <div className="min-h-screen pb-8">
-            <Container maxWidth="md" className="pt-6 space-y-6">
-                {/* Breadcrumb - only for spiritual pages */}
-                {!isLegal && (
-                    <nav className="flex items-center gap-2 text-sm text-[var(--muted)]">
-                        <Link href="/" className="hover:text-[var(--foreground)]">Inicio</Link>
-                        <span>›</span>
+        <>
+            {/* JSON-LD Structured Data */}
+            <script {...jsonLdScriptProps(breadcrumbSchema)} />
+            {articleSchema && <script {...jsonLdScriptProps(articleSchema)} />}
+
+            <article className="min-h-screen pb-8" itemScope itemType={isLegal ? "https://schema.org/WebPage" : "https://schema.org/Article"}>
+                <Container maxWidth="md" className="pt-6 space-y-6">
+                    {/* Breadcrumb Navigation */}
+                    <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-sm text-[var(--muted)]">
+                        <Link href="/" className="hover:text-[var(--foreground)] transition-colors">Inicio</Link>
+                        <span aria-hidden="true">›</span>
                         <span className="text-[var(--foreground)] capitalize">{page.category}</span>
                     </nav>
-                )}
 
                 {/* Article Header */}
                 <Card>
@@ -146,19 +207,20 @@ export default async function ArticlePage({
                 )}
 
                 {/* Back to Home */}
-                <div className="pt-4">
+                <nav aria-label="Navegación" className="pt-4">
                     <Link
                         href="/"
                         className="inline-flex items-center gap-2 text-sm text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
                     >
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7"/>
                         </svg>
                         Volver al inicio
                     </Link>
-                </div>
+                </nav>
             </Container>
-        </div>
+        </article>
+        </>
     );
 }
 
